@@ -36,27 +36,27 @@ class MainWindow(QMainWindow):
         self.addToolBar(navbar)
 
         # Back button
-        back_btn = QAction('Back', self)
+        back_btn = QAction(QIcon('back-arrow.png'), 'Back', self)
         back_btn.triggered.connect(self.current_browser().back)
         navbar.addAction(back_btn)
 
         # Forward button
-        forward_btn = QAction('Forward', self)
+        forward_btn = QAction(QIcon('front-arrow.png'),'Forward', self)
         forward_btn.triggered.connect(self.current_browser().forward)
         navbar.addAction(forward_btn)
 
         # Reload button
-        reload_btn = QAction('Reload', self)
+        reload_btn = QAction(QIcon('reload.png'),'Reload', self)
         reload_btn.triggered.connect(self.current_browser().reload)
         navbar.addAction(reload_btn)
 
         # Home button
-        home_btn = QAction('Home', self)
+        home_btn = QAction(QIcon('home.png'),'Home', self)
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
 
         # New Tab button
-        new_tab_btn = QAction('New Tab', self)
+        new_tab_btn = QAction(QIcon('new-tab.png'),'New Tab', self)
         new_tab_btn.triggered.connect(self.create_tab)
         navbar.addAction(new_tab_btn)
 
@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
         # navbar aesthetic
         navbar.setStyleSheet("QToolBar {background-color: #333; border: 1px solid #555;}")
         navbar.setIconSize(QSize(30, 30))
-
+        self.url_bar.setStyleSheet("QLineEdit { border-radius: 5px; padding: 2px; margin-right:5px; background: #FFF; }")
         self.showMaximized()
 
     def update_navbar(self, index):
