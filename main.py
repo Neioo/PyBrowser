@@ -7,6 +7,7 @@ from PyQt5.QtWebEngineWidgets import *
 class BrowserTab(QWidget):
     def __init__(self, parent=None):
         super(BrowserTab, self).__init__(parent)
+
         self.browser = QWebEngineView()
         self.browser.setUrl(QUrl('http://google.com'))
 
@@ -14,12 +15,16 @@ class BrowserTab(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.browser)
 
+
     def back(self):
         self.browser.back()
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+
+        self.setWindowIcon(QIcon('Logo.png'))
+
 
         self.tabs = QTabWidget()
         self.tabs.setDocumentMode(True)
@@ -66,10 +71,11 @@ class MainWindow(QMainWindow):
         navbar.addWidget(self.url_bar)
 
         # navbar aesthetic
-        navbar.setStyleSheet("QToolBar {background-color: #333; border: 1px solid #555;}")
+        navbar.setStyleSheet("QToolBar {background-color: #333; }")
         navbar.setIconSize(QSize(30, 30))
         self.url_bar.setStyleSheet("QLineEdit { border-radius: 5px; padding: 2px; margin-right:5px; background: #FFF; }")
         self.showMaximized()
+        self.setStyleSheet("QMainWindow {background-color: #333;}")
 
     def update_navbar(self, index):
         current_browser = self.current_browser()
